@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',Verdana,sans-serif;
+}
+
+body{
+    display: grid;
+    padding: 0 10px;
+    place-items: center;
+    min-height: 100vh;
+    background: #2c2c2c;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+::selection{
+    color:#fff;
+    background: #00b6ce;
+}
+
+.container{
+    width: 800px;
+    padding: 35px;
+    border-radius: 10px;
+}
+
+.container .input-field{
+    opacity: 0;
+    z-index: -999;
+    position: absolute;
+}
+
+.container .content-box{
+    padding: 13px 20px 0;
+    border-radius: 10px;
+}
+
+.content-box .typing-text{
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.typing-text::-webkit-scrollbar{
+    width: 0;
+}
+
+.typing-text p{
+    font-size: 21px;
+    text-align: justify;
+    letter-spacing: 1px;
+    word-break: break-all;
+}
+
+.typing-text p span{
+    position: relative;
+    color: #a3a3a3;
+}
+
+.typing-text p span.correct{
+    color: #4f9660;
+}
+
+.typing-text p span.incorrect{
+    color: #b43236;
+    border-radius: 4px;
+}
+
+.typing-text p span.active{
+    color: #17a2b8;
+}
+
+.typing-text p span.active::before{
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    border-radius: 5px;
+    background: #17a2b8;
+    animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity: 1;
+    }
+}
+
+.content-box .content{
+    margin-bottom: 17px;
+    display: flex;
+    padding: 12px 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.content button{
+    outline: none;
+    border: none;
+    width: 105px;
+    color: #fff;
+    padding: 8px 0;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    background: #424242;
+    transition: transform 0.3 ease;
+}
+
+.content button:active{
+    transform: scale(0.97);
+}
+
+.content .result-details{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: content;
+    width: calc(100% - 140px);
+    justify-content: space-between;
+}
+
+.result-details li{
+    display: flex;
+    height: 20px;
+    list-style: none;
+    position: relative;
+    align-items: center;
+}
+
+.result-details li:not(:first-child){
+    padding-left: 22px;
+    border-left: 1px solid #656565;
+}
+
+.result-details li p{
+    color: #f8f8f8;
+    font-size: 19px;
+}
+
+.result-details li span{
+    color: #f8f8f8;
+    display: block;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+li span b{
+    font-weight: 500;
+}
+
+li:not(:first-child) span{
+    font-weight: 500;
+}
+
+.container .result-details .mistake span{
+    color: red;
+}
+
+.container .result-details .wpm span{
+    color: #00ffa6;
+}
+
+.container .result-details .cpm span{
+    color: #00b7ff;
+}
+
+@media (max-width:745px){
+    body{
+        padding: 0;
+    }
+    .container{
+        width: 470px;
+        padding: 40px;
+    }
+
+    .content-box .content{
+        padding: 20px 0;
+    }
+
+    .content-box .typing-text{
+        max-height: 100%;
+    }
+    
+    .typing-text p{
+        font-size: 19px;
+        text-align: left;
+    }
+
+    .content .result-details{
+        width: 100%;
+    }
+
+    .result-details li:not(:first-child){
+        border-left: 0;
+        padding: 0;
+    }
+
+    .container button{
+        width: 100%;
+        font-size: 16px;
+        padding: 10px 0;
+        margin-bottom: 10px;
+    }
+
+    .result-details li p,
+    .result-details li span{
+        font-size: 17px;
+    }
+}
+
+@media (max-width:518px){
+    .container .content-box{
+        padding: 10px 15px 0;
+    }
+
+    .typing-text p{
+        font-size: 18px;
+    }
+
+    .result-details li{
+        margin-bottom: 10px;
+    }
+
+    .content button{
+        margin-top: 10px;
+    }
+}
