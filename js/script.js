@@ -50,7 +50,6 @@ const generateParagraph = (arrText, row) => {
 
 const loadParagraph = () => {
   const randIndex = Math.floor(Math.random() * paragraph.length);
-  typingText.innerHTML = "";
   if (paragraph.length > 0) {
     paragraph[randIndex].split("").forEach((char) => {
       let span = `<span>${char}</span>`;
@@ -86,17 +85,7 @@ const init = () => {
       }
       if (charIndex > characters.length * 0.8) {
         generateParagraph(paragraphGen, 1);
-        paragraph.shift();
-        const randIndex = Math.floor(Math.random() * paragraph.length);
-        if (paragraph.length > 0) {
-          paragraph[randIndex].split("").forEach((char) => {
-            let span = `<span>${char}</span>`;
-            typingText.innerHTML += span;
-          });
-          const type = typingText.querySelectorAll('span');
-          typingText.querySelectorAll('span')[type.length - 1].innerHTML += "<span>.</span>";
-          typingText.querySelectorAll('span')[type.length - 1].innerHTML += "<span> </span>";
-        }
+        loadParagraph();
       }
       charIndex++;
     }
@@ -144,6 +133,7 @@ const resetType = () => {
 };
 
 generateParagraph(paragraphGen, 1);
+typingText.innerHTML = "";
 loadParagraph();
 inpField.addEventListener("input", init);
 tryAgain.addEventListener("click", resetType);
